@@ -3,8 +3,8 @@ import {
   PlayerContext,
   DispatchPlayerContext,
 } from "../context/player.context";
-import {PauseIcon} from "./images/Pause";
-import PlayIcon from "./images/Start";
+import {PauseIcon} from "../images/Pause";
+import PlayIcon from "../images/Start";
 import { PlayerActionType } from "../reducers/player.reducer";
 import { useMediaContext } from "../context/useMediaContext";
 
