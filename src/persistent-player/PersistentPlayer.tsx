@@ -9,6 +9,7 @@ import { nextTrackAction, setSongListAction } from "../reducers/player.reducer";
 import { PlayerControl } from "./PlayerControl";
 import { PlayerTrackline } from "./PlayerTrackline";
 import absoluteUrl from "../utils/absoluteUrl"
+import { useMediaContext } from "../context/useMediaContext";
 
 export const PersistentPlayer = () => {
   const [timePass, setTimePass] = useState(0);
@@ -17,6 +18,7 @@ export const PersistentPlayer = () => {
   const [isShuffle, setIsShuffle] = useBoolean(false);
   const { isPlaying, currentSongSrc, release } = useContext(PlayerContext);
   const playerDispatch = useContext(DispatchPlayerContext);
+  const { getStyles } = useMediaContext();
   const audioRef = useRef<HTMLAudioElement>();
 
   const updateTimePass = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
@@ -86,8 +88,8 @@ export const PersistentPlayer = () => {
   if (!currentSongSrc) return null;
 
   return (
-    <div id="player" className="w-full fixed bottom-0 z-10 bg-background ">
-      <hr className="mx-6 border-t border-background-darker" />
+    <div id="player" {...getStyles("player")}>
+      <hr {...getStyles("playerHr")} />
       <div className="flex flex-col-reverse md:flex-row md:justify-between">
         <PlayerControl
           isPlaying={isPlaying}

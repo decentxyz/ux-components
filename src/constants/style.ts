@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { ThemeOptions, ThemeOptionsType } from "./theme";
+import "../index.css"
 
 const buttonReset = `
   font: inherit;
@@ -34,6 +35,19 @@ export const Style = {
       &:hover {
         fill: #730FE6;
       }
+    `,
+    player: () => css`
+      width: 100%;
+      position: fixed;
+      bottom: 0px;
+      z-index: 10;
+      background-color: rgb(255 255 255);
+    `,
+    playerHr: () => css`
+      margin-left: 1.5rem;
+      margin-right: 1.5rem; 
+      border-top-width: 1px;
+      border-color: #A39792];
     `,
     auctionHouseList: (_: ThemeOptionsType) => css`
       display: flex;

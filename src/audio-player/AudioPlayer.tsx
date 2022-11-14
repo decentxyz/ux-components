@@ -16,12 +16,12 @@ type AudioPlayerProps = {
   stakeButton?: any;
   active: boolean;
   size: number;
-  standalone?: boolean;
+  hasPlayer?: boolean;
   claimButton?: any | object;
 };
 
 const AudioPlayer = (props: AudioPlayerProps) => {
-  const { audioSrc, callbackAfterPlay, standalone } = props;
+  const { audioSrc, callbackAfterPlay, hasPlayer } = props;
   const { isPlaying, currentSongSrc } = useContext(PlayerContext);
   const playerDispatch = useContext(DispatchPlayerContext);
   const { getStyles } = useMediaContext();
@@ -29,23 +29,23 @@ const AudioPlayer = (props: AudioPlayerProps) => {
   const [message, setMessage] = useState(false);
 
   const togglePlay = () => {
-    if (standalone) {
+    if (!hasPlayer) {
       audio.play();
-    } else {
-      playerDispatch({
-        type: PlayerActionType.CHANGE_AUDIO_SRC,
-        payload: audioSrc,
-      });
-      playerDispatch({ type: PlayerActionType.TOGGLE_PLAY });  
-    }
+    } 
+    playerDispatch({
+      type: PlayerActionType.CHANGE_AUDIO_SRC,
+      payload: audioSrc,
+    });
+    playerDispatch({ type: PlayerActionType.TOGGLE_PLAY });  
+    
     
     callbackAfterPlay();
   };
 
   const togglePause = () => {
     if (isPlaying) {
-      audio.pause();
       playerDispatch({ type: PlayerActionType.TOGGLE_PAUSE });
+      audio.pause();
     }
   };
 
