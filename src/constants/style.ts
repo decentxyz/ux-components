@@ -1,6 +1,5 @@
 import { css } from "@emotion/css";
 import { ThemeOptions, ThemeOptionsType } from "./theme";
-import "../index.css"
 
 const buttonReset = `
   font: inherit;
