@@ -13,6 +13,7 @@ import {
   playTrackAction,
 } from "../reducers/player.reducer";
 import { useMediaQuery } from "../hooks";
+import { useMediaContext } from "../context/useMediaContext";
 
 type PlayerControlProps = {
   isPlaying: boolean;
@@ -32,6 +33,7 @@ export const PlayerControl = (props: PlayerControlProps) => {
     toggleShuffle,
     playerDispatch,
   } = props;
+  const { getStyles } = useMediaContext();
 
   const isDesktopMode = useMediaQuery(
     `(min-width: 900px)`
@@ -48,11 +50,12 @@ export const PlayerControl = (props: PlayerControlProps) => {
   );
 
   return (
-    <div className="flex my-6 md:my-4 md:mr-10 justify-center items-center">
+    <div {...getStyles("playerControlContainer")}>
       <button
         title="Shuffle"
         tabIndex={Number(isDesktopMode ? 4 : null)}
-        className={`md:order-4 mr-8 md:mr-9 relative flex ${
+        {...getStyles("shuffleButtonBase")}
+        className={`${
           isShuffle
             ? "after:content-[' '] after:w-1 after:h-1 after:absolute after:-right-1 after:bg-purple after:rounded-full"
             : ""
@@ -70,27 +73,17 @@ export const PlayerControl = (props: PlayerControlProps) => {
         <PrevIcon className="hover:fill-black" />
       </button>
       {isPlaying ? (
-        <button
-          title="Pause"
-          onClick={playerAction.togglePause}
-          className="mx-8 md:order-1 md:mx-6 flex"
-          tabIndex={Number(isDesktopMode ? 1 : null)}
-        >
+        <button title="Pause" tabIndex={Number(isDesktopMode ? 1 : null)} {...getStyles("buttonTransparent")} onClick={playerAction.togglePause}>
           <PauseIcon
-            className="fill-primary hover:fill-purple-dark"
+            {...getStyles("playIcon")}
             width={ICON_BIG}
             height={ICON_BIG}
           />
         </button>
       ) : (
-        <button
-          title="Play"
-          onClick={playerAction.togglePlay}
-          className="mx-8 md:order-1 md:mx-6 flex"
-          tabIndex={Number(isDesktopMode ? 1 : null)}
-        >
+        <button title="Play" tabIndex={Number(isDesktopMode ? 1 : null)} {...getStyles("buttonTransparent")} onClick={playerAction.togglePlay}>
           <PlayIcon
-            className="fill-primary hover:fill-purple-dark"
+            {...getStyles("playIcon")}
             width={ICON_BIG}
             height={ICON_BIG}
           />

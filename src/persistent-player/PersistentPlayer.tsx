@@ -90,7 +90,7 @@ export const PersistentPlayer = () => {
   return (
     <div id="player" {...getStyles("player")}>
       <hr {...getStyles("playerHr")} />
-      <div className="flex flex-col-reverse md:flex-row md:justify-between">
+      <div {...getStyles("playerContainer")}>
         <PlayerControl
           isPlaying={isPlaying}
           playerDispatch={playerDispatch}

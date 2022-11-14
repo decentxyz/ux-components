@@ -48,6 +48,39 @@ export const Style = {
       border-top-width: 1px;
       border-color: #A39792];
     `,
+    playerContainer: () => css`
+      display: flex; 
+      flex-direction: column-reverse; 
+
+
+      @media (min-width: 768px) { 
+        flex-direction: row; 
+        justify-content: space-between; 
+      }
+    `,
+    playerControlContainer: () => css`
+      display: flex; 
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem; 
+      justify-content: center; 
+      align-items: center; 
+
+      @media (min-width: 768px) { 
+        margin-top: 1rem;
+        margin-bottom: 1rem; 
+        margin-right: 2.5rem; 
+      }
+    `,
+    shuffleButtonBase: () => css`
+      display: flex; 
+      position: relative; 
+      margin-right: 2rem; 
+
+      @media (min-width: 768px) { 
+        margin-right: 2.25rem; 
+        order: 4; 
+      }
+    `,
     auctionHouseList: (_: ThemeOptionsType) => css`
       display: flex;
       flex-wrap: wrap;
