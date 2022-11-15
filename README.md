@@ -21,6 +21,8 @@ yarn add decent-audio-player
 
 ### ⏯️ decent-audio-player 🎧
 
+- example: [decent-audio-player](https://decentaudioplayer.vercel.app)
+
 2 options:
 
 - `<AudioPlayer />` - single track controls.
