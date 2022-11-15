@@ -34,6 +34,14 @@ export type SocialLinks = {
   lens?: string;
 }
 
+export type Song = {
+  songUrl: string;
+  project: string;
+  artist?: string;
+  website?: string;
+  image: string;
+};
+
 export type ProjectPayload = {
   _id?: string
   artist?: ArtistPayload;
