@@ -1,5 +1,5 @@
 import type { Reducer } from "react"
-import type { ProjectPayload } from "../types/shared"
+import type { ProjectPayload, Song } from "../types/shared"
 
 export const playerInitialState = {
   isPlaying: false,
@@ -74,7 +74,7 @@ export const playerReducer: Reducer<PlayerState, PlayerAction> = (
   }
 }
 
-export const setSongListAction = (songList: Array<ProjectPayload>) => ({ type: PlayerActionType.SET_SONG_LIST, payload: songList })
+export const setSongListAction = (songList: Array<Song>) => ({ type: PlayerActionType.SET_SONG_LIST, payload: songList })
 export const playTrackAction = () => ({ type: PlayerActionType.TOGGLE_PLAY })
 export const pauseTrackAction = () => ({ type: PlayerActionType.TOGGLE_PAUSE })
 export const changeTrackAction = (newSrc: string) => ({ type: PlayerActionType.CHANGE_AUDIO_SRC, payload: newSrc })

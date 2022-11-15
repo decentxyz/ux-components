@@ -8,10 +8,15 @@ import { useBoolean } from "../hooks"
 import { nextTrackAction, setSongListAction } from "../reducers/player.reducer";
 import { PlayerControl } from "./PlayerControl";
 import { PlayerTrackline } from "./PlayerTrackline";
-import absoluteUrl from "../utils/absoluteUrl"
 import { useMediaContext } from "../context/useMediaContext";
+import type { Song } from "src/types/shared";
 
-export const PersistentPlayer = () => {
+type PersistentPlayerProps = {
+  playlist?: Song[];
+};
+
+export const PersistentPlayer = (props: PersistentPlayerProps) => {
+  const {playlist} = props;
   const [timePass, setTimePass] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isRepeatOnce, setIsRepeatOnce] = useBoolean(false);
@@ -67,19 +72,10 @@ export const PersistentPlayer = () => {
   }, [isRepeatOnce]);
 
   useEffect(() => {
-    const convertImageSrc = (item: any) => {
-      return {
-        ...item,
-        image: item.image.replace('../public', ''),
-        nft: item.nft.replace('../public', '')
-      }
-    }
-
     const fetchSongList = async() => {
-      const response = await fetch(`${absoluteUrl().origin}/api/release`);
-      const json = await response.json();
-      const songList = json.map(convertImageSrc);
-      playerDispatch(setSongListAction(songList));
+      if (playlist!== undefined) {
+        playerDispatch(setSongListAction(playlist));
+      }
     }
 
     fetchSongList().catch(console.error);
@@ -106,19 +102,19 @@ export const PersistentPlayer = () => {
         />
         {release && <div className="flex flex-row justify-between px-6 pt-6 md:py-4 mb-8 md:mb-0 cursor-pointer">
           <div className="md:mr-4 md:w-64 whitespace-nowrap md:text-right">
-            <a href={`/releases/${release?.["_id"]}`}>
+            <a href={release?.["songUrl"]}>
               <h3 title={release?.["project"]} className="text-ellipsis overflow-hidden hover:text-primary">
                 {release?.["project"] || ""}
               </h3>
             </a>
-            <a href={`/artist/${release?.["artist"]?.["username"]}`}>
-              <p title={release?.["artist"]?.["artistName"]} className="text-ellipsis overflow-hidden hover:text-primary">
-                {release?.["artist"]?.["artistName"] || ""}
+            <a href={release?.["website"]}>
+              <p title={release?.["artist"]} className="text-ellipsis overflow-hidden hover:text-primary">
+                {release?.["artist"] || ""}
               </p>
             </a>
           </div>
-          <a href={`/releases/${release?.["_id"]}`}>
-            <img className="rounded-sm hover:opacity-90" src={release?.["nft"]} width={ICON_BIG} height={ICON_BIG}></img>
+          <a href={release?.["songUrl"]}>
+            <img className="rounded-sm hover:opacity-90" src={release?.["image"]} width={ICON_BIG} height={ICON_BIG}></img>
           </a>
         </div>}
       </div>
