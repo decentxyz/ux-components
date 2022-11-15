@@ -28,7 +28,7 @@ export const PlayerTrackline = (props: PlayerTracklineProps) => {
         <Slider.Thumb {...getStyles("sliderThumb")}/>
       </Slider.Root>
 
-      <span {...getStyles("playerMinuteString")}>{toMinuteString(Math.floor(trackDuration || 0))}</span>
+      <span {...getStyles("playerMinuteDurationString")}>{toMinuteString(Math.floor(trackDuration || 0))}</span>
     </div>
   );
 };

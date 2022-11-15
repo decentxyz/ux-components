@@ -104,7 +104,7 @@ export const PersistentPlayer = () => {
           trackDuration={duration}
           onChange={handleChangeTrackLine}
         />
-        <div className="flex flex-row justify-between px-6 pt-6 md:py-4 mb-8 md:mb-0 cursor-pointer">
+        {release && <div className="flex flex-row justify-between px-6 pt-6 md:py-4 mb-8 md:mb-0 cursor-pointer">
           <div className="md:mr-4 md:w-64 whitespace-nowrap md:text-right">
             <a href={`/releases/${release?.["_id"]}`}>
               <h3 title={release?.["project"]} className="text-ellipsis overflow-hidden hover:text-primary">
@@ -120,7 +120,7 @@ export const PersistentPlayer = () => {
           <a href={`/releases/${release?.["_id"]}`}>
             <img className="rounded-sm hover:opacity-90" src={release?.["nft"]} width={ICON_BIG} height={ICON_BIG}></img>
           </a>
-        </div>
+        </div>}
       </div>
        <audio
         src={currentSongSrc}

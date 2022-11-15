@@ -75,14 +75,19 @@ export const Style = {
     playerMinuteString: () => css`
       min-width: 42px;
     `,
+    playerMinuteDurationString: () => css`
+      min-width: 42px;
+      padding-right: 2.5rem; 
+    `,
     playerTracklineContainer: () => css`
       display: flex; 
       margin-left: 1.5rem;
       margin-right: 1.5rem; 
-      margin-left: 1.25rem; 
+      margin-left: 1.25rem;
       justify-content: center; 
       align-items: center; 
       flex-grow: 1;
+      gap: 1.25rem;
       
       @media (min-width: 768px) { 
         margin-left: 0;
