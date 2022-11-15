@@ -1,29 +1,34 @@
-# ⏯️ decent-audio-player 🎧
+# Decent UX Components
 
-Decent's Audio Player allows you to easily create your own music player or streaming player with Decent infrastructure.
+Decent's UX Components allows you to easily create your own music player, minting site, or music marketplace with Decent infrastructure.
 
 This library works alongside the Decent [minting studio](https://hq.decent.xyz/) allows for DAOs and individuals to run their own decentralized record labels. Arbitrary music NFTs across a wide variety of contract implementations are supported.
-
-![DECENT_AUDIO_PLAYER](https://user-images.githubusercontent.com/23249402/201524220-eaa1c4d4-f24c-409d-9cee-bcaf40c66f0c.gif)
 
 ### Main components:
 
 - [AudioPlayer](https://github.com/SweetmanTech/audio-player/blob/main/src/audio-player/AudioPlayer.tsx)
   - Used to render a Play / Pause button.
-  - `size` - size of Audio Player.
-  - `audioSrc` - src of audio.
-  - `callbackAfterPlay` - function to call after track begins playing.
-  - `active` - flag for pre-released tracks to be unplayable / disabled.
 
 ### Quickstart
 
-1. Install package:
+1. Add package:
 
 ```bash
 yarn add decent-audio-player
 ```
 
-2. Add Providers:
+### ⏯️ decent-audio-player 🎧
+
+2 options:
+
+- `<AudioPlayer />` - single track controls.
+- `<PersistentPlayer />` - full-width playbar with playlists.
+
+![DECENT_AUDIO_PLAYER](https://user-images.githubusercontent.com/23249402/201524220-eaa1c4d4-f24c-409d-9cee-bcaf40c66f0c.gif)
+
+### Usage
+
+1. Add Providers:
 
 ```tsx
 import { useReducer } from "react";
@@ -46,7 +51,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 };
 ```
 
-3. Render a simple Audio Player:
+2. Render a simple Audio Player:
 
 ```tsx
 import { AudioPlayer } from "decent-audio-player";
@@ -59,4 +64,59 @@ export const Page = () => (
     active
   />
 );
+```
+
+2. Render a full Persistent Player:
+
+```tsx
+import { AudioPlayer } from "decent-audio-player";
+
+const PLAYLIST = [
+  {
+    songUrl:
+      "https://nftstorage.link/ipfs/bafybeihxtxizfgtp5nazudkuc6dvtru2rykyklsse7t5r3rquydirgunxy/SHINY_7.wav",
+    project: "shiny",
+    artist: "kat dahlia",
+    website: "https://github.com/decentxyz",
+    image:
+      "https://nftstorage.link/ipfs/QmVJBGbMXHNyBe62ruPByK5MG6KdbZkSGPiBMfpqRQ6qP2",
+  },
+  {
+    songUrl:
+      "https://nftstorage.link/ipfs/bafybeid3su3rqfwj7ydk52coz3xinku5vc7uu557t7rdkxx5dswcbxolda",
+    project: "rugburn by sad alex",
+    artist: "sad alex & chillpill",
+    website: "https://github.com/decentxyz",
+    image:
+      "https://nftstorage.link/ipfs/bafybeif55mfehhzipicowg7fpdvdmgulwk6jgz2pbbxwuxjt7pmr7swlvu",
+  },
+];
+
+export const Page = () => {
+  return <PersistentPlayer playlist={PLAYLIST} />;
+};
+```
+
+### Props
+
+- `<AudioPlayer />`
+
+  - `size` - size of Audio Player.
+  - `audioSrc` - src of audio.
+  - `callbackAfterPlay` - function to call after track begins playing.
+  - `active` - flag for pre-released tracks to be unplayable / disabled.
+
+- `<PersistentPlayer />`
+  - `playlist` - Array of Songs `Song[]`.
+
+Song
+
+```
+export type Song = {
+  songUrl: string;
+  project: string;
+  artist?: string;
+  website?: string;
+  image: string;
+};
 ```
