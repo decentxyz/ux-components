@@ -6,8 +6,10 @@ This library works alongside the Decent [minting studio](https://hq.decent.xyz/)
 
 ### Main components:
 
-- [AudioPlayer](https://github.com/SweetmanTech/audio-player/blob/main/src/audio-player/AudioPlayer.tsx)
-  - Used to render a Play / Pause button.
+- `<AudioPlayer />`
+  - play / pause button.
+- `<PersistentPlayer />`
+  - full play bar.
 
 ### Quickstart
 
