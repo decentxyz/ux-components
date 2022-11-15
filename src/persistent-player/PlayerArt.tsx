@@ -1,3 +1,4 @@
+import { useMediaContext } from "../context/useMediaContext";
 import { ICON_BIG } from "../constants/styles"
 
 type PlayerArtProps = {
@@ -10,17 +11,18 @@ type PlayerArtProps = {
 
 const PlayerArt = (props: PlayerArtProps) => {
     const {songUrl, project, website, artist, image} = props;
+    const { getStyles } = useMediaContext();
 
     return (
-        <div className="flex flex-row justify-between px-6 pt-6 md:py-4 mb-8 md:mb-0 cursor-pointer">
-          <div className="md:mr-4 md:w-64 whitespace-nowrap md:text-right">
+        <div {...getStyles("playerArtContainer")}>
+          <div {...getStyles("playerTextContainer")}>
             <a href={songUrl}>
-              <h3 title={project} className="text-ellipsis overflow-hidden hover:text-primary">
+              <h3 title={project} {...getStyles("playerText")}>
                 {project || ""}
               </h3>
             </a>
             <a href={website}>
-              <p title={artist} className="text-ellipsis overflow-hidden hover:text-primary">
+              <p title={artist} {...getStyles("playerText")}>
                 {artist || ""}
               </p>
             </a>

@@ -20,10 +20,7 @@ export function useMediaContext() {
       );
     }
 
-    const styles = mediaContext.style.styles[themeKey](
-      mediaContext.style.theme,
-      flags
-    );
+    const styles = mediaContext.style.styles[themeKey]();
 
     const getUtilitySelectors = (flagsObject: any) => {
       if (Object.keys(flagsObject).length) {
