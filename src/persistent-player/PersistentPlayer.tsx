@@ -94,7 +94,7 @@ export const PersistentPlayer = () => {
         <PlayerControl
           isPlaying={isPlaying}
           playerDispatch={playerDispatch}
-          isRepeatOnce={isRepeatOnce}
+          // isRepeatOnce={isRepeatOnce}
           toggleReplay={setIsRepeatOnce.toggle}
           isShuffle={isShuffle}
           toggleShuffle={setIsShuffle.toggle}

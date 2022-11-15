@@ -50,8 +50,7 @@ export const Style = {
     `,
     playerContainer: () => css`
       display: flex; 
-      flex-direction: column-reverse; 
-
+      flex-direction: column-reverse;
 
       @media (min-width: 768px) { 
         flex-direction: row; 
@@ -62,8 +61,10 @@ export const Style = {
       display: flex; 
       margin-top: 1.5rem;
       margin-bottom: 1.5rem; 
+      margin-left: 1.5rem;
       justify-content: center; 
       align-items: center; 
+      gap: 1.25rem; 
 
       @media (min-width: 768px) { 
         margin-top: 1rem;
@@ -71,14 +72,48 @@ export const Style = {
         margin-right: 2.5rem; 
       }
     `,
-    shuffleButtonBase: () => css`
-      display: flex; 
-      position: relative; 
-      margin-right: 2rem; 
+    nextButtonBase: () => css`
+      background-color: transparent;
+      border: none;
 
       @media (min-width: 768px) { 
-        margin-right: 2.25rem; 
+        order: 3; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    previousButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 2; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    repeatButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 5; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    shuffleButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
         order: 4; 
+      }
+      :hover {
+        cursor: pointer; 
       }
     `,
     auctionHouseList: (_: ThemeOptionsType) => css`

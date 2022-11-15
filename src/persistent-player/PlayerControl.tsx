@@ -17,7 +17,7 @@ import { useMediaContext } from "../context/useMediaContext";
 
 type PlayerControlProps = {
   isPlaying: boolean;
-  isRepeatOnce: boolean;
+  // isRepeatOnce: boolean;
   isShuffle: boolean;
   playerDispatch: Dispatch<PlayerAction>;
   toggleReplay: () => void;
@@ -27,7 +27,7 @@ type PlayerControlProps = {
 export const PlayerControl = (props: PlayerControlProps) => {
   const {
     isPlaying,
-    isRepeatOnce,
+    // isRepeatOnce,
     isShuffle,
     toggleReplay,
     toggleShuffle,
@@ -54,23 +54,18 @@ export const PlayerControl = (props: PlayerControlProps) => {
       <button
         title="Shuffle"
         tabIndex={Number(isDesktopMode ? 4 : null)}
-        {...getStyles("shuffleButtonBase")}
-        className={`${
-          isShuffle
-            ? "after:content-[' '] after:w-1 after:h-1 after:absolute after:-right-1 after:bg-purple after:rounded-full"
-            : ""
-        }`}
+        {...getStyles("shuffleButtonBase") }
         onClick={toggleShuffle}
       >
-        <ShuffleIcon className="hover:fill-black" />
+        <ShuffleIcon />
       </button>
       <button
         title="Previous"
-        className="md:order-2 md:mr-9 flex"
+        {...getStyles("previousButtonBase") }
         onClick={playerAction.togglePrev}
         tabIndex={Number(isDesktopMode ? 2 : null)}
       >
-        <PrevIcon className="hover:fill-black" />
+        <PrevIcon />
       </button>
       {isPlaying ? (
         <button title="Pause" tabIndex={Number(isDesktopMode ? 1 : null)} {...getStyles("buttonTransparent")} onClick={playerAction.togglePause}>
@@ -91,19 +86,15 @@ export const PlayerControl = (props: PlayerControlProps) => {
       )}
       <button
         title="Next"
-        className="mr-8 md:order-3 md:mr-9 flex"
+        {...getStyles("nextButtonBase")}
         onClick={playerAction.toggleNext}
         tabIndex={Number(isDesktopMode ? 3 : null)}
       >
-        <NextIcon className="hover:fill-black" />
+        <NextIcon />
       </button>
       <button
         title="Repeat"
-        className={`md:order-5 relative flex ${
-          isRepeatOnce
-            ? "after:content-[' '] after:w-1 after:h-1 after:absolute after:right-0 after:bg-purple after:rounded-full"
-            : ""
-        }`}
+        {...getStyles("repeatButtonBase")}
         onClick={toggleReplay}
         tabIndex={Number(isDesktopMode ? 4 : null)}
       >
