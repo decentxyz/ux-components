@@ -171,5 +171,3 @@ export const ThemeOptions = {
    */
    useCollectionTag: true,
 };
-
-export type ThemeOptionsType = typeof ThemeOptions;

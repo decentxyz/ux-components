@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { ICON_BIG } from "../constants/styles";
 import {
   DispatchPlayerContext,
   PlayerContext,
@@ -10,6 +9,7 @@ import { PlayerControl } from "./PlayerControl";
 import { PlayerTrackline } from "./PlayerTrackline";
 import { useMediaContext } from "../context/useMediaContext";
 import type { Song } from "src/types/shared";
+import PlayerArt from "./PlayerArt";
 
 type PersistentPlayerProps = {
   playlist?: Song[];
@@ -100,23 +100,15 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
           trackDuration={duration}
           onChange={handleChangeTrackLine}
         />
-        {release && <div className="flex flex-row justify-between px-6 pt-6 md:py-4 mb-8 md:mb-0 cursor-pointer">
-          <div className="md:mr-4 md:w-64 whitespace-nowrap md:text-right">
-            <a href={release?.["songUrl"]}>
-              <h3 title={release?.["project"]} className="text-ellipsis overflow-hidden hover:text-primary">
-                {release?.["project"] || ""}
-              </h3>
-            </a>
-            <a href={release?.["website"]}>
-              <p title={release?.["artist"]} className="text-ellipsis overflow-hidden hover:text-primary">
-                {release?.["artist"] || ""}
-              </p>
-            </a>
-          </div>
-          <a href={release?.["songUrl"]}>
-            <img className="rounded-sm hover:opacity-90" src={release?.["image"]} width={ICON_BIG} height={ICON_BIG}></img>
-          </a>
-        </div>}
+        {release && 
+          <PlayerArt 
+            songUrl={release?.["songUrl"]} 
+            project={release?.["project"]} 
+            website={release?.["website"]} 
+            artist={release?.["artist"]} 
+            image={release?.["image"]} 
+          />
+        }
       </div>
        <audio
         src={currentSongSrc}
