@@ -3,8 +3,8 @@ import {
   PlayerContext,
   DispatchPlayerContext,
 } from "../context/player.context";
-import {PauseIcon} from "./images/Pause";
-import PlayIcon from "./images/Start";
+import {PauseIcon} from "../images/Pause";
+import PlayIcon from "../images/Start";
 import { PlayerActionType } from "../reducers/player.reducer";
 import { useMediaContext } from "../context/useMediaContext";
 
@@ -16,11 +16,12 @@ type AudioPlayerProps = {
   stakeButton?: any;
   active: boolean;
   size: number;
+  hasPlayer?: boolean;
   claimButton?: any | object;
 };
 
 const AudioPlayer = (props: AudioPlayerProps) => {
-  const { audioSrc, callbackAfterPlay } = props;
+  const { audioSrc, callbackAfterPlay, hasPlayer } = props;
   const { isPlaying, currentSongSrc } = useContext(PlayerContext);
   const playerDispatch = useContext(DispatchPlayerContext);
   const { getStyles } = useMediaContext();
@@ -28,20 +29,24 @@ const AudioPlayer = (props: AudioPlayerProps) => {
   const [message, setMessage] = useState(false);
 
   const togglePlay = () => {
+    if (!hasPlayer) {
+      audio.play();
+    } 
     playerDispatch({
       type: PlayerActionType.CHANGE_AUDIO_SRC,
       payload: audioSrc,
     });
-    playerDispatch({ type: PlayerActionType.TOGGLE_PLAY });
-    audio.play();
+    playerDispatch({ type: PlayerActionType.TOGGLE_PLAY });  
+    
+    
     callbackAfterPlay();
   };
 
   const togglePause = () => {
     if (isPlaying) {
       playerDispatch({ type: PlayerActionType.TOGGLE_PAUSE });
+      audio.pause();
     }
-    audio.pause();
   };
 
   const showMessage = () => {

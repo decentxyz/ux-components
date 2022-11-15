@@ -1,4 +1,5 @@
 import AudioPlayer from "./audio-player/AudioPlayer";
+import {PersistentPlayer} from "./persistent-player/PersistentPlayer";
 import {
   DispatchPlayerContext,
   PlayerContext,
@@ -12,6 +13,7 @@ export {
   // Audio Player
   AudioPlayer,
   DispatchPlayerContext,
+  PersistentPlayer,
   PlayerContext,
   playerReducer,
   playerInitialState

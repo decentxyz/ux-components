@@ -35,6 +35,144 @@ export const Style = {
         fill: #730FE6;
       }
     `,
+    player: () => css`
+      width: 100%;
+      position: fixed;
+      bottom: 0px;
+      z-index: 10;
+      background-color: rgb(255 255 255);
+    `,
+    playerHr: () => css`
+      margin-left: 1.5rem;
+      margin-right: 1.5rem; 
+      border-top-width: 1px;
+      border-color: #A39792];
+    `,
+    playerContainer: () => css`
+      display: flex; 
+      flex-direction: column-reverse;
+
+      @media (min-width: 768px) { 
+        flex-direction: row; 
+        justify-content: space-between; 
+      }
+    `,
+    playerControlContainer: () => css`
+      display: flex; 
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem; 
+      margin-left: 1.5rem;
+      justify-content: center; 
+      align-items: center; 
+      gap: 1.25rem; 
+
+      @media (min-width: 768px) { 
+        margin-top: 1rem;
+        margin-bottom: 1rem; 
+        margin-right: 2.5rem; 
+      }
+    `,
+    playerMinuteString: () => css`
+      min-width: 42px;
+    `,
+    playerMinuteDurationString: () => css`
+      min-width: 42px;
+      padding-right: 2.5rem; 
+    `,
+    playerTracklineContainer: () => css`
+      display: flex; 
+      margin-left: 1.5rem;
+      margin-right: 1.5rem; 
+      margin-left: 1.25rem;
+      justify-content: center; 
+      align-items: center; 
+      flex-grow: 1;
+      gap: 1.25rem;
+      
+      @media (min-width: 768px) { 
+        margin-left: 0;
+        margin-right: 0; 
+      }
+    `,
+    nextButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 3; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    previousButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 2; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    repeatButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 5; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    shuffleButtonBase: () => css`
+      background-color: transparent;
+      border: none;
+
+      @media (min-width: 768px) { 
+        order: 4; 
+      }
+      :hover {
+        cursor: pointer; 
+      }
+    `,
+    sliderRange: () => css`
+      position: absolute; 
+      height: 100%; 
+      border-radius: 9999px; 
+      background-color: #222225;
+      .group[active] {
+        background-color: #9969FF;
+      }
+    `,
+    sliderRoot: () => css`
+      display: flex; 
+      position: relative; 
+      align-items: center; 
+      width: 100%; 
+      cursor: pointer; 
+    `,
+    sliderThumb: () => css`
+      display: block; 
+      width: 0.75rem; 
+      height: 0.75rem; 
+      border-radius: 9999px; 
+      background-color: #222225;
+      .group[hover] {
+        --transform-scale-x: 1.5;
+        --transform-scale-y: 1.5; 
+        background-color: #730FE6;
+      }
+    `,
+    sliderTrack: () => css`
+      width: 100%; 
+      height: 0.25rem; 
+      border-radius: 9999px;  
+      background-color: #D6C7C0;
+      flex-grow: 1;
+    `,
     auctionHouseList: (_: ThemeOptionsType) => css`
       display: flex;
       flex-wrap: wrap;
