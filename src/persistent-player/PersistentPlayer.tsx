@@ -73,7 +73,6 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
 
   useEffect(() => {
     const fetchSongList = async() => {
-      console.log("FETCHING...")
       if (playlist!== undefined) {
         playerDispatch(setSongListAction(playlist));
       }
