@@ -28,7 +28,7 @@ const PlayerArt = (props: PlayerArtProps) => {
             </a>
           </div>
           <a href={songUrl}>
-            <img className="rounded-sm hover:opacity-90" src={image} width={ICON_BIG} height={ICON_BIG}></img>
+            <img {...getStyles("playerImage")} src={image} width={ICON_BIG} height={ICON_BIG}></img>
           </a>
         </div>
     )

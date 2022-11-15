@@ -44,6 +44,13 @@ export const Style = {
       border-top-width: 1px;
       border-color: #A39792];
     `,
+    playerImage: () => css`
+      border-radius: 0.125rem; 
+
+      :hover {
+        opacity: 0.9; 
+      }
+    `,
     playerContainer: () => css`
       display: flex; 
       flex-direction: column-reverse;
