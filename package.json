@@ -1,6 +1,6 @@
 {
   "name": "decent-audio-player",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Decent UX Components",
   "typings": "dist/index.d.ts",
   "source": "src/index.ts",
