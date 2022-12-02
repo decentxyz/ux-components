@@ -16,7 +16,7 @@ type PersistentPlayerProps = {
 };
 
 export const PersistentPlayer = (props: PersistentPlayerProps) => {
-  const {playlist} = props;
+  const { playlist } = props;
   const [timePass, setTimePass] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isRepeatOnce, setIsRepeatOnce] = useBoolean(false);
@@ -44,7 +44,7 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
     const audio = e.currentTarget;
     if (!audio.loop) {
       playerDispatch(nextTrackAction(1, isShuffle));
-    } 
+    }
   };
 
   const onNewSongCanPlay = (
@@ -72,8 +72,8 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
   }, [isRepeatOnce]);
 
   useEffect(() => {
-    const fetchSongList = async() => {
-      if (playlist!== undefined) {
+    const fetchSongList = async () => {
+      if (playlist !== undefined) {
         playerDispatch(setSongListAction(playlist));
       }
     }
@@ -83,10 +83,21 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
 
   if (!currentSongSrc) return null;
 
+  console.log(release)
   return (
     <div id="player" {...getStyles("player")}>
       <hr {...getStyles("playerHr")} />
       <div {...getStyles("playerContainer")}>
+        {release && 
+          <PlayerArt 
+            songUrl={release?.["songUrl"]} 
+            project={release?.["project"]} 
+            website={release?.["website"]} 
+            artist={release?.["artist"]} 
+            image={release?.["image"]} 
+            isPlaying={isPlaying}
+          />
+        }
         <PlayerControl
           isPlaying={isPlaying}
           playerDispatch={playerDispatch}
@@ -100,17 +111,8 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
           trackDuration={duration}
           onChange={handleChangeTrackLine}
         />
-        {release && 
-          <PlayerArt 
-            songUrl={release?.["songUrl"]} 
-            project={release?.["project"]} 
-            website={release?.["website"]} 
-            artist={release?.["artist"]} 
-            image={release?.["image"]} 
-          />
-        }
       </div>
-       <audio
+      <audio
         src={currentSongSrc}
         ref={audioRef as any}
         onTimeUpdate={updateTimePass}

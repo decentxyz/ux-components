@@ -1,5 +1,5 @@
 {
-  "name": "decent-audio-player",
+  "name": "@decent.xyz/ux-components",
   "version": "1.0.6",
   "description": "Decent UX Components",
   "typings": "dist/index.d.ts",
@@ -41,6 +41,7 @@
   },
   "scripts": {
     "prepack": "yarn clean && tsc",
+    "tsc": "tsc",
     "publish-prelease": "npm publish --access public --tag=pre-release",
     "build": "yarn run prepack",
     "clean": "rm -rf ./dist"

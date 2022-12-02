@@ -12,7 +12,6 @@ import {
   PlayerAction,
   playTrackAction,
 } from "../reducers/player.reducer";
-import { useMediaQuery } from "../hooks";
 import { useMediaContext } from "../context/useMediaContext";
 
 type PlayerControlProps = {
@@ -35,10 +34,6 @@ export const PlayerControl = (props: PlayerControlProps) => {
   } = props;
   const { getStyles } = useMediaContext();
 
-  const isDesktopMode = useMediaQuery(
-    `(min-width: 900px)`
-  );
-
   const playerAction = useMemo(
     () => ({
       togglePlay: () => playerDispatch(playTrackAction()),
@@ -52,23 +47,14 @@ export const PlayerControl = (props: PlayerControlProps) => {
   return (
     <div {...getStyles("playerControlContainer")}>
       <button
-        title="Shuffle"
-        tabIndex={Number(isDesktopMode ? 4 : null)}
-        {...getStyles("shuffleButtonBase") }
-        onClick={toggleShuffle}
-      >
-        <ShuffleIcon />
-      </button>
-      <button
         title="Previous"
         {...getStyles("previousButtonBase") }
         onClick={playerAction.togglePrev}
-        tabIndex={Number(isDesktopMode ? 2 : null)}
       >
         <PrevIcon />
       </button>
       {isPlaying ? (
-        <button title="Pause" tabIndex={Number(isDesktopMode ? 1 : null)} {...getStyles("buttonTransparent")} onClick={playerAction.togglePause}>
+        <button title="Pause" {...getStyles("buttonTransparent")} onClick={playerAction.togglePause}>
           <PauseIcon
             {...getStyles("playIcon")}
             width={ICON_BIG}
@@ -76,7 +62,7 @@ export const PlayerControl = (props: PlayerControlProps) => {
           />
         </button>
       ) : (
-        <button title="Play" tabIndex={Number(isDesktopMode ? 1 : null)} {...getStyles("buttonTransparent")} onClick={playerAction.togglePlay}>
+        <button title="Play" {...getStyles("buttonTransparent")} onClick={playerAction.togglePlay}>
           <PlayIcon
             {...getStyles("playIcon")}
             width={ICON_BIG}
@@ -88,15 +74,20 @@ export const PlayerControl = (props: PlayerControlProps) => {
         title="Next"
         {...getStyles("nextButtonBase")}
         onClick={playerAction.toggleNext}
-        tabIndex={Number(isDesktopMode ? 3 : null)}
       >
         <NextIcon />
+      </button>
+      <button
+        title="Shuffle"
+        {...getStyles("shuffleButtonBase") }
+        onClick={toggleShuffle}
+      >
+        <ShuffleIcon />
       </button>
       <button
         title="Repeat"
         {...getStyles("repeatButtonBase")}
         onClick={toggleReplay}
-        tabIndex={Number(isDesktopMode ? 4 : null)}
       >
         <RepeatIcon className="hover:fill-black" />
       </button>

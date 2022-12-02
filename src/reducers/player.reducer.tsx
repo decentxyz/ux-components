@@ -9,7 +9,7 @@ export const playerInitialState = {
 }
 
 const extractSongData = (release: ProjectPayload) => ({
-  currentSongSrc: release.songUrl,
+  currentSongSrc: release?.songUrl,
   release,
 })
 
