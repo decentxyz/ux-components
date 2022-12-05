@@ -77,7 +77,9 @@ export const Style = {
     `,
     playerImage: () => css`
       border-radius: 999px;
-
+      object-fit: cover;
+      width: 88px;
+      height: 88px;
       :hover {
         opacity: 0.9; 
       }
