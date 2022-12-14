@@ -83,7 +83,6 @@ export const PersistentPlayer = (props: PersistentPlayerProps) => {
 
   if (!currentSongSrc) return null;
 
-  console.log(release)
   return (
     <div id="player" {...getStyles("player")}>
       <hr {...getStyles("playerHr")} />
