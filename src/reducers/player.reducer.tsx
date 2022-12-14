@@ -9,7 +9,7 @@ export const playerInitialState = {
 }
 
 const extractSongData = (release: ProjectPayload) => ({
-  currentSongSrc: release.songUrl,
+  currentSongSrc: release?.songUrl,
   release,
 })
 
@@ -17,9 +17,9 @@ const extractSongData = (release: ProjectPayload) => ({
 export enum PlayerActionType {
   SET_SONG_LIST = "SET_SONG_LIST",
   TOGGLE_PLAY = "TOOGLE_PLAY",
-  TOGGLE_PAUSE = "TOGGLE_PAUSE ",
-  CHANGE_AUDIO_SRC = "CHANGE_AUDIO_SRC ",
-  UPDATE_SONG_INFO = "UPDATE_SONG_INFO ",
+  TOGGLE_PAUSE = "TOGGLE_PAUSE",
+  CHANGE_AUDIO_SRC = "CHANGE_AUDIO_SRC",
+  UPDATE_SONG_INFO = "UPDATE_SONG_INFO",
   NEXT_TRACK = "NEXT_TRACK",
 }
 

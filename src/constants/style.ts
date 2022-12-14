@@ -24,18 +24,49 @@ export const Style = {
     `,
     playerArtContainer: () => css`
       display: flex; 
-      padding-left: 1.5rem;
-      padding-right: 1.5rem; 
-      padding-top: 1.5rem; 
-      margin-bottom: 2rem; 
+      padding-left: 124px;
+      padding-right: 1.5rem;
+      margin-right: auto;
       flex-direction: row; 
-      justify-content: space-between; 
-      cursor: pointer; 
-      
+      cursor: pointer;
+      position: relative;
+      min-width: 350px;
+      max-width: 500px;
+
       @media (min-width: 768px) { 
-        padding-top: 1rem;
-        padding-bottom: 1rem; 
         margin-bottom: 0; 
+      }
+    `,
+    playerSpinner: () => css`
+      position: absolute;
+      top: -15px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ::after {
+        content: '';
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        position: absolute;
+        border-radius: 999px;
+      }
+
+      animation-name: spin;
+      animation-duration: 5000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    
+      @keyframes spin {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
       }
     `,
     playerHr: () => css`
@@ -45,44 +76,41 @@ export const Style = {
       border-color: #A39792];
     `,
     playerImage: () => css`
-      border-radius: 0.125rem; 
-
+      border-radius: 999px;
+      object-fit: cover;
+      width: 88px;
+      height: 88px;
       :hover {
         opacity: 0.9; 
       }
     `,
     playerContainer: () => css`
-      display: flex; 
-      flex-direction: column-reverse;
-
-      @media (min-width: 768px) { 
-        flex-direction: row; 
-        justify-content: space-between; 
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      @media (min-width: 1050px) { 
+        flex-wrap: nowrap; 
       }
     `,
     playerControlContainer: () => css`
       display: flex; 
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem; 
+      margin-top: 1rem;
+      margin-bottom: 1rem; 
+      margin-right: 1rem; 
       margin-left: 1.5rem;
       justify-content: center; 
       align-items: center; 
-      gap: 1.25rem; 
+      gap: 1.5rem;
 
-      @media (min-width: 768px) { 
-        margin-top: 1rem;
-        margin-bottom: 1rem; 
-        margin-right: 2.5rem; 
-      }
     `,
     playerMinuteString: () => css`
       min-width: 42px;
     `,
     playerMinuteDurationString: () => css`
       min-width: 42px;
-      padding-right: 2.5rem; 
     `,
     playerText: () => css`
+      display:block;
       overflow: hidden; 
       text-overflow: ellipsis;
 
@@ -91,36 +119,26 @@ export const Style = {
       }
     `,
     playerTextContainer: () => css`
-      white-space: nowrap; 
-
-      @media (min-width: 768px) { 
-        margin-right: 1rem; 
-        text-align: right; 
-        width: 16rem; 
-      }
+      width: 100%;
+      white-space: nowrap;
+      padding: 12px 10px 12px 20px;
     `,
     playerTracklineContainer: () => css`
-      display: flex; 
-      margin-left: 1.5rem;
-      margin-right: 1.5rem; 
-      margin-left: 1.25rem;
+      display: flex;
+      min-width: min(100vw, 400px);
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
       justify-content: center; 
       align-items: center; 
       flex-grow: 1;
       gap: 1.25rem;
-      
-      @media (min-width: 768px) { 
-        margin-left: 0;
-        margin-right: 0; 
-      }
     `,
     nextButtonBase: () => css`
       background-color: transparent;
       border: none;
 
-      @media (min-width: 768px) { 
-        order: 3; 
-      }
       :hover {
         cursor: pointer; 
       }
@@ -129,9 +147,6 @@ export const Style = {
       background-color: transparent;
       border: none;
 
-      @media (min-width: 768px) { 
-        order: 2; 
-      }
       :hover {
         cursor: pointer; 
       }
@@ -140,9 +155,6 @@ export const Style = {
       background-color: transparent;
       border: none;
 
-      @media (min-width: 768px) { 
-        order: 5; 
-      }
       :hover {
         cursor: pointer; 
       }
@@ -151,9 +163,6 @@ export const Style = {
       background-color: transparent;
       border: none;
 
-      @media (min-width: 768px) { 
-        order: 4; 
-      }
       :hover {
         cursor: pointer; 
       }
@@ -192,6 +201,6 @@ export const Style = {
       border-radius: 9999px;  
       background-color: #D6C7C0;
       flex-grow: 1;
-    `
+    `,
   },
 };
