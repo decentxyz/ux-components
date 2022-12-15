@@ -1,6 +1,6 @@
 {
   "name": "@decent.xyz/ux-components",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Decent UX Components",
   "typings": "dist/index.d.ts",
   "source": "src/index.ts",
