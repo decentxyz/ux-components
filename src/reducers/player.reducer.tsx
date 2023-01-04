@@ -6,6 +6,7 @@ export const playerInitialState = {
   currentSongSrc: "",
   release: null,
   songList: [],
+  audioVolume: 1,
 }
 
 const extractSongData = (release: ProjectPayload) => ({
@@ -21,6 +22,7 @@ export enum PlayerActionType {
   CHANGE_AUDIO_SRC = "CHANGE_AUDIO_SRC",
   UPDATE_SONG_INFO = "UPDATE_SONG_INFO",
   NEXT_TRACK = "NEXT_TRACK",
+  SET_AUDIO_VOLUME = "SET_AUDIO_VOLUME",
 }
 
 export type PlayerAction = {
@@ -69,6 +71,13 @@ export const playerReducer: Reducer<PlayerState, PlayerAction> = (
         ...extractSongData(state.songList[nextSongIndex])
       }
     }
+    case PlayerActionType.SET_AUDIO_VOLUME: {
+      if (action.payload >= 0 && action.payload <= 1) {
+        return { ...state, audioVolume: action.payload }
+      }
+
+      return state
+    }
     default:
       return state
   }
@@ -80,3 +89,4 @@ export const pauseTrackAction = () => ({ type: PlayerActionType.TOGGLE_PAUSE })
 export const changeTrackAction = (newSrc: string) => ({ type: PlayerActionType.CHANGE_AUDIO_SRC, payload: newSrc })
 export const updateTrackInfoAction = (payload: ProjectPayload) => ({ type: PlayerActionType.UPDATE_SONG_INFO, payload })
 export const nextTrackAction = (delta: number, isShuffle: boolean) => ({ type: PlayerActionType.NEXT_TRACK, payload: { isShuffle, delta } })
+export const setAudioVolumeAction = (level: number) => ({ type: PlayerActionType.SET_AUDIO_VOLUME, payload: level })

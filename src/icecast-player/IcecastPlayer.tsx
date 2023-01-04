@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   DispatchPlayerContext,
   PlayerContext,
@@ -9,6 +9,7 @@ import type { ThemeType } from "../context/MediaContext";
 import type { Song } from "src/types/shared";
 import PlayerArt from "./PlayerArt";
 import { PlayerInfo } from "./PlayerInfo";
+import { setAudioVolumeAction } from "../reducers/player.reducer";
 
 // https://www.npmjs.com/package/icecast-metadata-player#options
 type IcecastOptions = {
@@ -25,6 +26,8 @@ type IcecastPlayerProps = {
   nextSong?: Song | undefined;
   options?: IcecastOptions | undefined
   callbackOnMetadata: () => void;
+  callbackOnPlay?: () => void;
+  callbackOnPause?: () => void;
   theme?: ThemeProps;
 };
 
@@ -38,13 +41,16 @@ export const IcecastPlayer = (props: IcecastPlayerProps) => {
     currentSong,
     nextSong,
     callbackOnMetadata,
+    callbackOnPlay,
+    callbackOnPause,
     options,
     theme,
   } = props;
 
   const playerDispatch = useContext(DispatchPlayerContext);
   const { getStyles } = useMediaContext(theme);
-  const { isPlaying } = useContext(PlayerContext);
+  const { isPlaying, audioVolume } = useContext(PlayerContext);
+  const [previousVolume, setPreviousVolume] = useState<number | undefined>();
 
   const audioRef = useRef<any>(null);
 
@@ -72,14 +78,33 @@ export const IcecastPlayer = (props: IcecastPlayerProps) => {
     }
   }, [streamURL]);
 
+  // "pausing" actually just mutes the audio
   useEffect(() => {
     if (!audioRef?.current) return;
+
     if (isPlaying) {
-      audioRef.current.play();
+      if (audioRef.current.state !== 'playing') {
+        audioRef.current.play();
+      }
+
+      if (previousVolume) {
+        playerDispatch(setAudioVolumeAction(previousVolume));
+      }
+
+      if (callbackOnPlay) callbackOnPlay();
     } else {
-      audioRef.current.stop();
+      setPreviousVolume(audioVolume);
+      playerDispatch(setAudioVolumeAction(0));
+
+      if (callbackOnPause) callbackOnPause();
     }
   }, [isPlaying]);
+
+  useEffect(() => {
+    if (!(audioRef?.current && audioRef.current.state === 'playing')) return;
+
+    audioRef.current.audioElement.volume = audioVolume;
+  }, [audioVolume]);
 
   return (
     <div id="player" {...getStyles("player")}>

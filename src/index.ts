@@ -7,7 +7,8 @@ import {
 } from "./context/player.context";
 import {
   playerReducer,
-  playerInitialState
+  playerInitialState,
+  setAudioVolumeAction,
 } from "./reducers/player.reducer"
 
 export {
@@ -18,5 +19,6 @@ export {
   PlayerContext,
   IcecastPlayer,
   playerReducer,
-  playerInitialState
+  playerInitialState,
+  setAudioVolumeAction,
 };
