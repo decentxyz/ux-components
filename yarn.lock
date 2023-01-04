@@ -289,6 +289,11 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.3.0.tgz"
   "version" "0.3.0"
 
+"@eshaz/web-worker@1.2.0":
+  "integrity" "sha512-HWobmNKFZ8eARo39vEjkviTIISudgzrTyAqab9pOB/qNfnUPIUUMZv6+eEUUfXnkqWCLS3zreTn9YzaRvO8vIA=="
+  "resolved" "https://registry.npmjs.org/@eshaz/web-worker/-/web-worker-1.2.0.tgz"
+  "version" "1.2.0"
+
 "@jridgewell/gen-mapping@^0.1.0":
   "integrity" "sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w=="
   "resolved" "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz"
@@ -518,6 +523,21 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
 
+"@wasm-audio-decoders/common@6.0.1":
+  "integrity" "sha512-PYU1pCro7fllKjlo+Yq3t8tSe0Dl/9054NpZghSFyarCpAngkKRI7JqPf8zmKBcmfdbejTL8hhodHtwc0Cam8g=="
+  "resolved" "https://registry.npmjs.org/@wasm-audio-decoders/common/-/common-6.0.1.tgz"
+  "version" "6.0.1"
+  dependencies:
+    "@eshaz/web-worker" "1.2.0"
+
+"@wasm-audio-decoders/flac@0.1.1":
+  "integrity" "sha512-1FQjNbGo8MEGBJhdehBJyBa6QpISbXT32w9kx02IhSdWZI9rYvpLc+A4jJNUD2AoFtPz0Fue6nN5Sk07SzCsdg=="
+  "resolved" "https://registry.npmjs.org/@wasm-audio-decoders/flac/-/flac-0.1.1.tgz"
+  "version" "0.1.1"
+  dependencies:
+    "@wasm-audio-decoders/common" "6.0.1"
+    "codec-parser" "2.2.0"
+
 "@webassemblyjs/ast@1.11.1":
   "integrity" "sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw=="
   "resolved" "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.11.1.tgz"
@@ -744,6 +764,11 @@
   "resolved" "https://registry.npmjs.org/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz"
   "version" "1.0.3"
 
+"codec-parser@2.2.0":
+  "integrity" "sha512-dD1VU8I7rmBhyWNYcwqlHIhVJ9ct3fiYRTJX8siuOxc9MMhpn0W3zuI1BUH0wtZWByb6Afe4tvM20Hcev5xqfQ=="
+  "resolved" "https://registry.npmjs.org/codec-parser/-/codec-parser-2.2.0.tgz"
+  "version" "2.2.0"
+
 "color-convert@^1.9.0":
   "integrity" "sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg=="
   "resolved" "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz"
@@ -948,6 +973,24 @@
   "resolved" "https://registry.npmjs.org/husky/-/husky-6.0.0.tgz"
   "version" "6.0.0"
 
+"icecast-metadata-js@1.1.2":
+  "integrity" "sha512-GkqavZAryuCSQ9otdcRk51rxre20RM+M9iI2lYNvI73VxQIOO4gHPUB65lpfliKUf4T2Iwd+EMFbX3iIx/Vm6w=="
+  "resolved" "https://registry.npmjs.org/icecast-metadata-js/-/icecast-metadata-js-1.1.2.tgz"
+  "version" "1.1.2"
+
+"icecast-metadata-player@^1.14.0":
+  "integrity" "sha512-Wfuql9uxwM0pPzOjHE5wRDEG8konea+urRSlr4xKUIPRSGaZkid33kmEr9xAo7Zy4flvzR01MM7Ntf7ri3v8cQ=="
+  "resolved" "https://registry.npmjs.org/icecast-metadata-player/-/icecast-metadata-player-1.14.0.tgz"
+  "version" "1.14.0"
+  dependencies:
+    "@wasm-audio-decoders/flac" "0.1.1"
+    "codec-parser" "2.2.0"
+    "icecast-metadata-js" "1.1.2"
+    "mpg123-decoder" "0.4.1"
+    "mse-audio-wrapper" "1.4.7"
+    "opus-decoder" "0.6.1"
+    "synaudio" "0.3.1"
+
 "import-fresh@^3.2.1":
   "integrity" "sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw=="
   "resolved" "https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.0.tgz"
@@ -1059,10 +1102,24 @@
   dependencies:
     "mime-db" "1.52.0"
 
+"mpg123-decoder@0.4.1":
+  "integrity" "sha512-Hqb5hH4jNPVsvjKN1RAgjegHj25hfP/kVjFxWi5XHYYBDcNNg0SGEB7f9aTmc0TeA/gisRHEyWuIZQsiQqBLUw=="
+  "resolved" "https://registry.npmjs.org/mpg123-decoder/-/mpg123-decoder-0.4.1.tgz"
+  "version" "0.4.1"
+  dependencies:
+    "@wasm-audio-decoders/common" "6.0.1"
+
 "ms@2.1.2":
   "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
   "version" "2.1.2"
+
+"mse-audio-wrapper@1.4.7":
+  "integrity" "sha512-wRO8wWUMQAQsiRtR1MDE6mVnbnI8cpxLf7/drpPm5YuImAvYG4GSyNQlatYuLgERUEqRj9f6Rj5GfwhzFXW80A=="
+  "resolved" "https://registry.npmjs.org/mse-audio-wrapper/-/mse-audio-wrapper-1.4.7.tgz"
+  "version" "1.4.7"
+  dependencies:
+    "codec-parser" "2.2.0"
 
 "neo-async@^2.6.2":
   "integrity" "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
@@ -1078,6 +1135,13 @@
   "integrity" "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="
   "resolved" "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
   "version" "4.1.1"
+
+"opus-decoder@0.6.1":
+  "integrity" "sha512-4ZFMrXsL8hlr6/Aj85pWjG0gZChYJIU5oHNTDrgiEZjWuTg3EFPlFW6sDVyMORwuetWsFkqm4RITOFcbqQnq4Q=="
+  "resolved" "https://registry.npmjs.org/opus-decoder/-/opus-decoder-0.6.1.tgz"
+  "version" "0.6.1"
+  dependencies:
+    "@wasm-audio-decoders/common" "6.0.1"
 
 "p-limit@^2.2.0":
   "integrity" "sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w=="
@@ -1168,13 +1232,11 @@
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
 
-"react@^16.8 || ^17.0 || ^18.0", "react@>=17.0.2", "react@17.0.2":
-  "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
-  "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
-  "version" "17.0.2"
+"react@^16.8 || ^17.0 || ^18.0", "react@17.0.2", "react@file:../clubspace/node_modules/react":
+  "resolved" "file:../clubspace/node_modules/react"
+  "version" "18.1.0"
   dependencies:
     "loose-envify" "^1.1.0"
-    "object-assign" "^4.1.1"
 
 "regenerator-runtime@^0.13.10":
   "integrity" "sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw=="
@@ -1247,6 +1309,11 @@
   dependencies:
     "randombytes" "^2.1.0"
 
+"simple-yenc@^0.2.3":
+  "integrity" "sha512-LGufdReGRgj0dXpqpF7j/MQ8SKu4pXAzpkHxQSDI0/GMOlmGY6oivl2hhsyMfAaOGYC6iqcxiDtBy+1MmM4JSA=="
+  "resolved" "https://registry.npmjs.org/simple-yenc/-/simple-yenc-0.2.3.tgz"
+  "version" "0.2.3"
+
 "source-map-support@~0.5.20":
   "integrity" "sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w=="
   "resolved" "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz"
@@ -1288,6 +1355,14 @@
   "integrity" "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
+
+"synaudio@0.3.1":
+  "integrity" "sha512-JLK/Uvr6sPI+yawt37AQNPcz33Ti23DDwgAX43JmmkZttM3vo6zm8l2IoogPhkbk1zVq59Fg9SOU6zHSshrWqA=="
+  "resolved" "https://registry.npmjs.org/synaudio/-/synaudio-0.3.1.tgz"
+  "version" "0.3.1"
+  dependencies:
+    "@eshaz/web-worker" "1.2.0"
+    "simple-yenc" "^0.2.3"
 
 "tapable@^2.1.1", "tapable@^2.2.0":
   "integrity" "sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ=="
