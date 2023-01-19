@@ -13,7 +13,7 @@ export const PlayerInfo = (props: PlayerInfoProps) => {
 
   return (
     <div {...getStyles("playerInfoContainer")}>
-      {nextSong && (
+      {nextSong?.project && (
         <div {...getStyles("playerTextContainer")}>
           <span {...getStyles("playerInfoNextTag")}>Next track</span>
           <p title={nextSong.project} {...getStyles("playerInfoNextText")}>
