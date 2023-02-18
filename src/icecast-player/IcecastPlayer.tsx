@@ -25,7 +25,7 @@ type IcecastPlayerProps = {
   currentSong?: Song | undefined;
   nextSong?: Song | undefined;
   options?: IcecastOptions | undefined
-  callbackOnMetadata: () => void;
+  callbackOnMetadata: (metadata: any) => void;
   callbackOnPlay?: () => void;
   callbackOnPause?: () => void;
   theme?: ThemeProps;
