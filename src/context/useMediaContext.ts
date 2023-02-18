@@ -4,7 +4,7 @@ import type { Strings } from "../constants/strings";
 import { MediaContext, ThemeType } from "./MediaContext";
 import { camelCase } from "../utils/camelCase";
 
-export function useMediaContext() {
+export function useMediaContext(overrides: any = {}) {
   const mediaContext = useContext(MediaContext);
 
   const getStyles = (
@@ -41,7 +41,9 @@ export function useMediaContext() {
 
     return {
       className: `${className ? `${className} ` : ""}zora-${themeKey}${
-        mediaContext.style.useDefaultStyles ? ` ${css(styles)}` : ""
+        mediaContext.style.useDefaultStyles
+          ? ` ${overrides[themeKey] ? css(styles, css(overrides[themeKey])) : styles}`
+          : ""
       } ${getUtilitySelectors(flags)}`,
     };
   };

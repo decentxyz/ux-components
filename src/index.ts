@@ -1,12 +1,14 @@
 import AudioPlayer from "./audio-player/AudioPlayer";
 import {PersistentPlayer} from "./persistent-player/PersistentPlayer";
+import {IcecastPlayer} from "./icecast-player/IcecastPlayer";
 import {
   DispatchPlayerContext,
   PlayerContext,
 } from "./context/player.context";
 import {
   playerReducer,
-  playerInitialState
+  playerInitialState,
+  setAudioVolumeAction,
 } from "./reducers/player.reducer"
 
 export {
@@ -15,6 +17,8 @@ export {
   DispatchPlayerContext,
   PersistentPlayer,
   PlayerContext,
+  IcecastPlayer,
   playerReducer,
-  playerInitialState
+  playerInitialState,
+  setAudioVolumeAction,
 };
